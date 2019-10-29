@@ -1,13 +1,13 @@
-import React from 'react';
+import React, {Component} from 'react';
 import './App.css';
 import SongContainer from './containers/SongContainer'
 
-function App() {
+class App extends Component {
+  render() {
   return (
-    <div className="App">
-      <SongContainer/>
-    </div>
+      <SongContainer/>  
   );
+}
 }
 
 export default App;

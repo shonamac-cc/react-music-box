@@ -1,12 +1,15 @@
 import React, {Component} from 'react'
+import SongSelector from '../components/SongSelector';
+import SongDetail from '../components/SongDetail';
 
 class SongContainer extends Component {
 
   constructor (props) {
     super(props);
     this.state = {
-      songs: []
-    }
+      songs: [],
+      currentSong: null
+    };
   }
 
   componentDidMount(){
@@ -14,7 +17,7 @@ class SongContainer extends Component {
 
     fetch(url)
       .then(res => res.json())
-      .then(songs => this.setState({songs: songs}))
+      .then(songs => this.setState({songs: songs.feed.entry}))
       .catch(err => console.error);
   }
 
@@ -22,6 +25,7 @@ class SongContainer extends Component {
     return(
       <div>
         <h1>The Top 20</h1>
+        <SongSelector songs={this.state.songs}/>
       </div>
     )
   }
